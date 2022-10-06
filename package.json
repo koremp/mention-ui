@@ -1,0 +1,8 @@
+{
+  "name": "mention-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/koremp/mention-ui",
+  "author": "Dokyun Lim <im.koremp@gmail.com>",
+  "license": "MIT"
+}
