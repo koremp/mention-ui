@@ -6,7 +6,6 @@ const app = new App({
   $target,
   initialState: {
     input: '',
-    prefixType: null,
     userList: [],
     selectedUserList: [],
   },

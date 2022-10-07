@@ -4,6 +4,8 @@ import SelectedUserList from './components/SelectedUserList.js';
 
 import { findUserList } from './api.js';
 
+import { debounce } from './utils.js';
+
 export default function App({ $target, initialState }) {
   if (!new.target) {
     return new App({ $target, initialState });
@@ -16,17 +18,16 @@ export default function App({ $target, initialState }) {
 
     this.validator();
 
-    const {
-      _input, _prefixType, _userList, _selectedUserList,
-    } = nextState;
-
-    textInput.setState({ input: _input, prefixType: _prefixType, userList: _userList });
-    userList.setState(_userList);
-    selectedUserList.setState(_selectedUserList);
+    textInput.setState({
+      input: this.state.input,
+      userList: this.state.userList,
+    });
+    userList.setState(this.state.userList);
+    selectedUserList.setState(this.state.selectedUserList);
   };
 
   this.validator = () => {
-    const keys = ['input', 'prefixType', 'userList', 'selectedUserList'];
+    const keys = ['input', 'userList', 'selectedUserList'];
     if (!keys.every((key) => key in this.state)) {
       throw new Error('wrong data types in App state.');
     }
@@ -36,20 +37,29 @@ export default function App({ $target, initialState }) {
     $target,
     initialState: {
       input: this.state.input,
-      prefixType: this.state.prefixType,
       userList: this.state.userList,
     },
-    onSearch: (text, prefixType) => {
-      const userList = findUserList(text, prefixType);
-      console.log(userList)
+    onSearch: debounce((keyword) => {
+      const prefixIndex = keyword.indexOf('@') > keyword.indexOf('#')
+        ? keyword.indexOf('@')
+        : keyword.indexOf('#');
+      const nameText = keyword.slice(prefixIndex + 1);
+
+      const userList = findUserList(nameText) || [];
       const unselected = userList.filter((u) => !this.state.selectedUserList.includes(u));
       const available = unselected.filter((u) => u.status === 'available');
 
+      console.log(available);
+
+      const nextState = this.state;
+
+      console.log(nextState);
       this.setState({
+        input: keyword,
         userList: available,
-        ...userList
+        selectedUserList: nextState.selectedUserList,
       });
-    },
+    }),
     onClear: () => {
       const nextState = this.state;
       nextState.input = '';

@@ -1,9 +1,3 @@
-const checkInput = (text) => {
-  if (text) {
-    // check
-  }
-};
-
 export default function TextInput({
   $target, initialState, onSearch, onAddUser, onClear,
 }) {
@@ -27,7 +21,7 @@ export default function TextInput({
       try {
         onAddUser(this.state.userList.find((u) => u.username === this.state.input));
       } catch (e) {
-        throw new Error('this');
+        throw new Error('wrong on onAddUser in TextInput');
       }
     }
 
@@ -35,9 +29,10 @@ export default function TextInput({
   });
 
   this.$element.addEventListener('keyup', (e) => {
-    const text = e.target.value;
-    if (checkInput(text)) {
-      onSearch();
+    const keyword = e.target.value.trim();
+    if (keyword !== ''
+      && (keyword.includes('@') || keyword.includes('#'))) {
+      onSearch(keyword);
     }
   });
 
