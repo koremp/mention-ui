@@ -1,0 +1,117 @@
+[
+  {
+    "username": "shepherd",
+    "personalInfo": {
+      "firstName": "쉐퍼드",
+      "lastName": "Kim",
+      "displayName": "쉐퍼드킴"
+    },
+    "tags": [
+      "110",
+      "900"
+    ],
+    "status": "available"
+  },
+  {
+    "username": "munchkin",
+    "personalInfo": {
+      "firstName": "먼치킨",
+      "lastName": "Kim",
+      "displayName": null
+    },
+    "tags": [
+      "200",
+      "100"
+    ],
+    "status": "available"
+  },
+  {
+    "username": "bordercollie",
+    "personalInfo": {
+      "firstName": "보더콜리",
+      "lastName": null,
+      "displayName": null
+    },
+    "tags": [
+      "550",
+      "500"
+    ],
+    "status": "available"
+  },
+  {
+    "username": "forest",
+    "personalInfo": {
+      "firstName": null,
+      "lastName": null,
+      "displayName": null
+    },
+    "tags": [
+      "300",
+      "100",
+      "500",
+      "900"
+    ],
+    "status": "available"
+  },
+  {
+    "username": "iamdt",
+    "personalInfo": {
+      "firstName": null,
+      "lastName": null,
+      "displayName": "IAMDT"
+    },
+    "tags": [
+      "110",
+      "20"
+    ],
+    "status": "available"
+  },
+  {
+    "username": "vethornors",
+    "personalInfo": {
+      "firstName": "벳아너",
+      "lastName": "서",
+      "displayName": "Vethonors"
+    },
+    "tags": [
+      "100",
+      "110",
+      "200"
+    ],
+    "status": "available"
+  },
+  {
+    "username": "spaniel",
+    "personalInfo": {
+      "firstName": null,
+      "lastName": "스패니얼",
+      "displayName": null
+    },
+    "tags": [
+      "200",
+      "300",
+      "550",
+      "900"
+    ],
+    "status": "available"
+  },
+  {
+    "username": "unknown",
+    "personalInfo": {
+      "firstName": "노운",
+      "lastName": "엄",
+      "displayName": "u5n"
+    },
+    "tags": [
+      "20",
+      "100",
+      "110",
+      "200",
+      "300",
+      "500",
+      "550",
+      "900"
+    ],
+    "status": "unavailable"
+  }
+]
