@@ -8,14 +8,17 @@ module.exports = {
     'airbnb-base',
   ],
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 6,
     sourceType: 'module',
   },
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-    actor: 'readonly',
-    Feature: 'readonly',
-    Scenario: 'readonly',
+  // globals: {
+  //   Atomics: 'readonly',
+  //   SharedArrayBuffer: 'readonly',
+  //   actor: 'readonly',
+  //   Feature: 'readonly',
+  //   Scenario: 'readonly',
+  // },
+  rules: {
+    'import/extensions': 'off',
   },
 };
