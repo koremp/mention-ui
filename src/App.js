@@ -49,11 +49,8 @@ export default function App({ $target, initialState }) {
       const unselected = userList.filter((u) => !this.state.selectedUserList.includes(u));
       const available = unselected.filter((u) => u.status === 'available');
 
-      console.log(available);
-
       const nextState = this.state;
 
-      console.log(nextState);
       this.setState({
         input: keyword,
         userList: available,
