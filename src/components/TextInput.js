@@ -21,7 +21,7 @@ export default function TextInput({
       const keyword = e.target.value;
       const uKeyword = keyword.toUpperCase();
       const filteredUsers = this.state.userList.filter((u) => u.username === uKeyword
-        || (u.personalInfo.firstName && u.personalInfo.firstName.toUpperCase() == uKeyword)
+        || (u.personalInfo.firstName && u.personalInfo.firstName.toUpperCase() === uKeyword)
         || (u.personalInfo.lastName && u.personalInfo.lastName.toUpperCase() === uKeyword));
 
       if (filteredUsers.length > 0) {
