@@ -25,7 +25,7 @@ export default function TextInput({
         || (u.personalInfo.lastName && u.personalInfo.lastName.toUpperCase() === uKeyword));
 
       if (filteredUsers.length > 0) {
-        onSearch(filteredUsers);
+        onAddUser(filteredUsers);
         return;
       }
     }
