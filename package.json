@@ -6,11 +6,11 @@
   "author": "Dokyun Lim <im.koremp@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d dist",
-    "test:unit": "jest",
-    "coverage": "yarn test:unit -- --coverage",
-    "test:e2e": "codeceptjs run --steps",
-    "test": "yarn coverage && start-server-and-test start http://localhost:8080 test:e2e",
+    // "build": "babel src -d dist",
+    // "test:unit": "jest",
+    // "coverage": "yarn test:unit -- --coverage",
+    // "test:e2e": "codeceptjs run --steps",
+    // "test": "yarn coverage && start-server-and-test start http://localhost:8080 test:e2e",
     "lint": "eslint --ext js .",
     "precommit": "eslint ."
   },
