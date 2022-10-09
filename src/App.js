@@ -58,7 +58,8 @@ export default function App({ $target, initialState }) {
       });
     }),
     onAddUser: (users) => {
-      const nextState = this.state;
+      // const nextState = this.state;
+      // nextState.selectedUserList.unshift(users);
     },
     onClear: () => {
       const nextState = this.state;
