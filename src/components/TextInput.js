@@ -23,6 +23,7 @@ export default function TextInput({
       } catch (e) {
         throw new Error('wrong on onAddUser in TextInput');
       }
+      return;
     }
 
     onClear();
