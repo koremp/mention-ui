@@ -18,12 +18,16 @@ export default function TextInput({
 
   this.$element.addEventListener('Enter', (e) => {
     if (this.state.userList.length > 0) {
-      try {
-        onAddUser(this.state.userList.find((u) => u.username === this.state.input));
-      } catch (e) {
-        throw new Error('wrong on onAddUser in TextInput');
+      const keyword = e.target.value;
+      const uKeyword = keyword.toUpperCase();
+      const filteredUsers = this.state.userList.filter((u) => u.username === uKeyword
+        || (u.personalInfo.firstName && u.personalInfo.firstName.toUpperCase() == uKeyword)
+        || (u.personalInfo.lastName && u.personalInfo.lastName.toUpperCase() === uKeyword));
+
+      if (filteredUsers.length > 0) {
+        onSearch(filteredUsers);
+        return;
       }
-      return;
     }
 
     onClear();
