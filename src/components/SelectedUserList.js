@@ -1,6 +1,7 @@
 export default function SelectedUserList({ $target, initialState }) {
   this.state = initialState;
   this.$element = document.createElement('ul');
+  this.$element.className = 'selected-user-list';
 
   $target.appendChild(this.$element);
 
@@ -25,7 +26,7 @@ export default function SelectedUserList({ $target, initialState }) {
       }
 
       return `<b>@${item.username}</b>`;
-    });
+    }).map((text) => `<li>${text}</li>`).join('');
 
     this.$element.innerHTML = htmlString;
   };

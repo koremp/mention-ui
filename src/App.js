@@ -43,9 +43,9 @@ export default function App({ $target, initialState }) {
       const prefixIndex = keyword.indexOf('@') > keyword.indexOf('#')
         ? keyword.indexOf('@')
         : keyword.indexOf('#');
-      const nameText = keyword.slice(prefixIndex + 1);
+      const nameText = keyword.slice(prefixIndex);
 
-      const userList = findUserList(nameText) || [];
+      const userList = findUserList(nameText);
       const unselected = userList.filter((u) => !this.state.selectedUserList.includes(u));
       const available = unselected.filter((u) => u.status === 'available');
 
@@ -57,6 +57,9 @@ export default function App({ $target, initialState }) {
         selectedUserList: nextState.selectedUserList,
       });
     }),
+    onAddUser: (users) => {
+      const nextState = this.state;
+    },
     onClear: () => {
       const nextState = this.state;
       nextState.input = '';
