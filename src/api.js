@@ -15,7 +15,7 @@ export const findUserList = (text) => {
   }
 
   if (text[0] === '#') {
-    return data.filter(user => user.tags.includes(tag => tag.toUpperCase().includes(keyword)));
+    return data.filter(user => user.tags.join(',').includes(keyword));
   }
 };
 
