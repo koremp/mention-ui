@@ -1,27 +1,94 @@
 # Mention UI Assignment
 
-[링크](https://github.com/team-iamdt/screening-tests/tree/main/frontend/common--mention-user)
+[구현 사항 링크](https://github.com/team-iamdt/screening-tests/tree/main/frontend/common--mention-user)
 
 ## (필수) 실행방법
 
-### 설치
-
 ```bash
-yarn
-```
-
-### 실행하기
-
-```bash
+yarn install
 yarn start
 ```
 
 `http://localhost:8080`을 입력하여 접속해 주세요.
 
-만약 현재 컴퓨터에서 이미 8080이라는 포트를 사용하고 있다면 8081으로 실행이 될 수도 있어요.
-만약 8081도 사용하고 있으면 8082, 8083 ... 순서대로 찾아서 만들어집니다.
+## 사용
 
-## (권장) 과제에 대한 문제 정의, 해결 계획과 방법에 대한 설명
+* Webpack
+* Babel
+* JavaScript
+* Jest
+* ESLint
+* Yarn
+
+## 목차
+
+* [구현](#구현)
+* [기타](#기타)
+
+## 구현
+
+### 파일별 역할
+
+#### src/index.js
+
+|변수|역할|
+|--|--|
+|`$target`|main 태그를 갖고있는 엘리먼트 변수.|
+|`app`|생성된 `App` 컴포넌트가 할당된 변수.|
+
+#### src/utils.js
+
+|함수|역할|
+|--|--|
+|`debounce`|`func`인자로 들어온 함수가 `time`시간 내에 호출될 경우 기존 함수의 실행을 취소하고 최신 호출한 함수가 동작하도록 하는 함수.|
+
+#### src/App.js
+
+|함수|역할|
+|--|--|
+|`App`|전역 상태를 관리하는 컴포넌트 함수.|
+|`App.setState`|`App` 컴포넌트의 상태를 설정하는 함수. `validator` 함수를 호출하여 `App` 컴포넌트가 관리하는 상태를 검증한 뒤, 하위 컴포넌트들의 state를 설정하는 함수. |
+|`App.validator`|`App` 컴포넌트 내의 상태가 유효한 상태인지 확인하는 함수. |
+|`App textInput`|`TextInput` 컴포넌트가 할당된 변수|
+|`App textInput.onSearch`|`TextInput` 컴포넌트에서 검색하는 기능을 구현한 함수. `findUserList` 함수를 호출하여 조건에 맞는 검색결과를 `App.state.userList`, `App.state.selectedUserList` 상태에 설정한다. |
+|`App textInput.onAddUser`|`TextInput` 컴포넌트에서 검색된 유저를 선택하여 추가할 때 사용하는 기능을 구현한 함수. 완성하지 못했다.|
+|`App textInput.onClear`|`TextInput` 컴포넌트에서 엔터키를 눌렀을 때 실행되는 함수.|
+|`App selectedUserList`|`SeletctedUserList` 컴포넌트가 할당된 변수.|
+|`App userList`|`UserList` 컴포넌트가 할당된 변수.|
+
+#### src/components/TextInput.js__
+
+|함수 또는 변수|역할|
+|--|--|
+|`TextInput`|검색어를 입력하는 컴포넌트 함수.|
+|`TextInput this.state`|상태가 할당된 변수.|
+|`TextInput this.$element`|`input`태그를 만들어 파라미터인 `$target` DOM 엘리먼트에 자식으로 추가되는 변수. `Enter`, `keyup`에 대한 `eventListener` 함수를 추가했다. `Enter` 이벤트에서는 `#`, `@` 명령에 대한 동작 중 `@` 명령만 구현되어있다. `@` 명령 동작에 일치하는 유저가 존재하면 파라미터로 받은 `onAddUser` 함수를 호출하여 `App this.state.selectedUserList`에 추가시킨다.|
+|`TextInput this.setState`|`TextInput` 컴포넌트 함수 내부의 상태를 변경할 때 사용하는 함수.|
+|`TextInput this.render`|`TextInput`의 값을 렌더링하는 함수.|
+
+#### src/components/SelectedUserList.js__
+
+|함수 또는 변수|역할|
+|--|--|
+|`SelectedUserList`|선택된 유저들을 표시하는 컴포넌트 함수.|
+|`SelectedUserList this.state`|상태가 할당된 변수|
+|`SelectedUserList this.$element`|`ul`태그를 만들어 `selected-user-list`를 클래스 속성에 할당하고 `this.state`의 값들을 변경시켜 파라미터인 `$target` DOM 엘리먼트에 자식으로 추가되는 변수.|
+|`SelectedUserList this.render`|`SelectedUserList`의 값을 렌더링하는 함수. 유저들을 조건에 따라 다르게 렌더링한다.|
+|`SelectedUserList this.setState`|`SelectedUserList` 컴포넌트 함수 내부의 상태를 변경할 때 사용하는 함수.|
+
+#### src/components/UserList.js__
+
+|함수 또는 변수|역할|
+|--|--|
+|`UserList`|선택된 유저들을 표시하는 컴포넌트 함수.|
+|`UserList this.state`|상태가 할당된 변수|
+|`UserList this.$element`|`ul`태그를 만들어 `user-list`를 클래스 속성에 할당하고 `this.state`의 값들을 변경시켜 파라미터인 `$target` DOM 엘리먼트에 자식으로 추가되는 변수.|
+|`UserList this.render`|`UserList`의 값을 렌더링하는 함수. 유저들을 조건에 따라 다르게 렌더링한다.|
+|`UserList this.setState`|`UserList` 컴포넌트 함수 내부의 상태를 변경할 때 사용하는 함수.|
+
+## 기타
+
+### (권장) 과제에 대한 문제 정의, 해결 계획과 방법에 대한 설명
 
 과제에 대한 문제 정의라는 문장을 이해하지 못하겠다.
 
